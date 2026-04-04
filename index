@@ -1,1 +1,402 @@
+<!DOCTYPE html>
 
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abdel Rahman | Software Engineer Portfolio</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800;900&amp;family=Manrope:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;700&amp;family=Ubuntu+Mono&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#353534",
+                    "inverse-primary": "#9000de",
+                    "on-background": "#e5e2e1",
+                    "on-error-container": "#ffdad6",
+                    "primary-fixed-dim": "#e3b5ff",
+                    "tertiary-container": "#cca72f",
+                    "on-secondary": "#4a0080",
+                    "outline-variant": "#4e4355",
+                    "surface-dim": "#050505",
+                    "inverse-surface": "#e5e2e1",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "on-error": "#690005",
+                    "surface": "#050505",
+                    "on-secondary-fixed-variant": "#622599",
+                    "primary-container": "#a020f0",
+                    "on-tertiary": "#3c2f00",
+                    "on-surface-variant": "#d1c1d7",
+                    "surface-bright": "#3a3939",
+                    "on-secondary-container": "#d1a1ff",
+                    "background": "#050505",
+                    "outline": "#9a8ca0",
+                    "on-tertiary-fixed": "#241a00",
+                    "primary-fixed": "#f3daff",
+                    "on-tertiary-container": "#4e3d00",
+                    "on-primary-fixed": "#2f004c",
+                    "surface-tint": "#e3b5ff",
+                    "inverse-on-surface": "#313030",
+                    "secondary": "#ddb7ff",
+                    "on-primary": "#4d007a",
+                    "surface-container": "#0e0e0e",
+                    "tertiary-fixed": "#ffe088",
+                    "surface-container-lowest": "#050505",
+                    "secondary-fixed": "#f0dbff",
+                    "on-primary-fixed-variant": "#6e00ab",
+                    "secondary-fixed-dim": "#ddb7ff",
+                    "tertiary": "#D4AF37",
+                    "secondary-container": "#622599",
+                    "on-primary-container": "#f9e8ff",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#131313",
+                    "on-secondary-fixed": "#2c0050",
+                    "surface-container-high": "#1c1b1b",
+                    "tertiary-fixed-dim": "#D4AF37",
+                    "primary": "#a020f0",
+                    "surface-variant": "#353534",
+                    "on-surface": "#e5e2e1",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Epilogue"],
+                    "body": ["Manrope"],
+                    "label": ["Space Grotesk"],
+                    "mono": ["Ubuntu Mono"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .scan-line {
+            background: linear-gradient(to bottom, transparent 50%, rgba(160, 32, 240, 0.03) 50%);
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+        .bento-glass {
+            background: rgba(28, 27, 27, 0.15);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .glow-purple {
+            box-shadow: 0 0 40px rgba(160, 32, 240, 0.1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<div class="fixed inset-0 scan-line z-50"></div>
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-40 bg-transparent backdrop-blur-3xl shadow-[0_0_60px_rgba(160,32,240,0.05)]">
+<nav class="flex justify-between items-center max-w-7xl mx-auto px-10 py-6">
+<div class="text-2xl font-black tracking-tighter text-primary">
+                Abdel Rahman
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-primary border-b-2 border-primary pb-1 hover:opacity-80 transition-all duration-300" href="#home">Home</a>
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white transition-all duration-300" href="#projects">Projects</a>
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white transition-all duration-300" href="#skills">Skills</a>
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white transition-all duration-300" href="#timeline">Timeline</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary scale-95 cursor-pointer">terminal</span>
+</div>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto px-10 py-16">
+<!-- Hero Section & Terminal -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-10" id="home">
+<div class="lg:col-span-7 flex flex-col justify-center">
+<h1 class="font-headline text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-6">
+                    Abdel Rahman <br/>
+<span class="text-primary">Software Engineer</span>
+</h1>
+<p class="font-label text-on-surface-variant text-xl uppercase tracking-widest mb-8">
+                    CS Student @ MSA University <span class="text-tertiary mx-2">|</span> Competitive Programmer
+                </p>
+<div class="flex gap-4">
+<button class="bg-gradient-to-r from-primary-container to-secondary-container px-8 py-4 rounded-lg font-headline text-on-primary font-bold uppercase tracking-widest hover:scale-105 transition-transform">
+                        Explore Works
+                    </button>
+<button class="border border-outline-variant/30 px-8 py-4 rounded-lg font-headline text-on-surface font-bold uppercase tracking-widest hover:bg-surface-container-high transition-colors">
+                        Get in Touch
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-5">
+<div class="bento-glass rounded-xl p-1 overflow-hidden border-primary/20 border-2 glow-purple">
+<div class="bg-surface-container-highest/50 px-4 py-2 flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-[10px] font-mono ml-4 text-on-surface-variant opacity-50 uppercase tracking-widest">root@abdelrahman: ~</span>
+</div>
+<div class="p-6 font-mono text-sm leading-relaxed min-h-[250px]">
+<div class="mb-2"><span class="text-primary">$</span> whoami</div>
+<div class="text-on-surface-variant mb-4">
+                            &gt; Name: Abdel Rahman <br/>
+                            &gt; Role: Software Engineer / Student <br/>
+                            &gt; Focus: Low-level Systems, Algorithms, Web Architectures <br/>
+                            &gt; Status: Compiling the future...
+                        </div>
+<div class="mb-2"><span class="text-primary">$</span> cat mission.txt</div>
+<div class="text-on-surface-variant">Building high-performance digital ecosystems through technical precision and algorithmic efficiency.</div>
+<div class="mt-4 animate-pulse"><span class="text-primary">$</span> <span class="bg-on-surface w-2 h-4 inline-block align-middle"></span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid - First Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-10">
+<!-- Competitive Programming Box -->
+<div class="md:col-span-2 bento-glass rounded-xl p-10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-tertiary/10 blur-[60px] group-hover:bg-tertiary/20 transition-all"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded flex items-center justify-center border border-tertiary/30">
+<span class="material-symbols-outlined text-tertiary">code_blocks</span>
+</div>
+<div>
+<h3 class="font-headline text-lg uppercase tracking-tight">Competitive Programming</h3>
+<p class="font-mono text-xs text-on-surface-variant">Codeforces: abdelrahmann1</p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-mono text-3xl font-bold text-tertiary">1400</span>
+<span class="font-label text-[10px] text-tertiary uppercase tracking-widest">Specialist Rating</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-lg border-t-2 border-tertiary">
+<span class="font-label text-[10px] text-tertiary uppercase block mb-1">Achievement</span>
+<h4 class="font-headline text-md">ECPC 2025 Finalist</h4>
+<p class="font-mono text-xs text-on-surface-variant">Rank: 61st Place</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg border-t-2 border-primary">
+<span class="font-label text-[10px] text-primary uppercase block mb-1">Next Goal</span>
+<h4 class="font-headline text-md">Expert Candidate</h4>
+<p class="font-mono text-xs text-on-surface-variant">Target: 1600+</p>
+</div>
+</div>
+</div>
+<!-- Technical Arsenal -->
+<div class="md:col-span-1 lg:col-span-2 bento-glass rounded-xl p-10" id="skills">
+<h3 class="font-headline text-lg uppercase tracking-tight mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">terminal</span>
+                    Technical Arsenal
+                </h3>
+<div class="grid grid-cols-2 gap-x-8 gap-y-6">
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-mono text-xs uppercase">C++ / STL</span>
+<span class="font-mono text-xs text-primary">90%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary glow-purple" style="width: 90%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-mono text-xs uppercase">SQL / MySQL</span>
+<span class="font-mono text-xs text-primary">80%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary glow-purple" style="width: 80%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-mono text-xs uppercase">PHP</span>
+<span class="font-mono text-xs text-primary">70%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary glow-purple" style="width: 70%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-mono text-xs uppercase">jQuery / JS</span>
+<span class="font-mono text-xs text-primary">70%</span>
+</div>
+<div class="h-1 bg-surface-container-highest w-full rounded-full overflow-hidden">
+<div class="h-full bg-primary glow-purple" style="width: 70%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Showcases -->
+<h2 class="font-headline text-4xl mb-10 tracking-tighter" id="projects">Selected Projects</h2>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-10">
+<!-- Project 1 -->
+<div class="bento-glass rounded-xl overflow-hidden flex flex-col group p-2">
+<div class="h-48 overflow-hidden relative rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" data-alt="modern medical dashboard interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIz2FM_WYsjsG_-_t1HRKbxaNuo3Gw3AJlH3Kk9cCU2-dFWy6ExagZKgUwZdKkQxAAQdQQTTujP_BxGCspy2yu2zMnUND1cTYpvzi6PYyn9OuMkaDzslSP5Cs2ncCHNM_ECxuhYeBSIuUq5rHGfReeGV54OH0uahwfNyvyjEFkx60mV1JkiuajFP7ZA2ai1EFS43XS0IpdYUYY2jp0R7L4eBI4eV7C6xi142hWZwBQEiSl8OmnqqyckuSFZkou52giWaeEIePvpsYi"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<span class="bg-surface-container-highest text-primary-fixed-dim px-3 py-1 rounded text-[10px] font-mono uppercase">Full Stack</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="font-headline text-xl mb-3">Zahra Medical Platform</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex-1">A comprehensive healthcare management system designed for seamless patient-doctor interactions using PHP and MySQL.</p>
+<div class="flex gap-2 mb-6 flex-wrap">
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">PHP</span>
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">MySQL</span>
+</div>
+<a class="text-primary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link" href="#https://github.com/abdelrahman-ah1/Zahra-medical">
+                        View Project
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="bento-glass rounded-xl overflow-hidden flex flex-col group p-2 border-t border-tertiary/20">
+<div class="h-48 overflow-hidden relative rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" data-alt="digital tree graph visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1dtEC-EI4AAdGmJkypOzPGdTQU3MQmYVbjrBcmZ9BHd5V56hY4u4-dbAzOtjoqPGy1TXSvIOVmcvxxpdd60_D2YvDIg90NvzejUBnZg8ZqB32TuIg1emn-DzwlGqk2wVFXWEHAS1xgB75BsMUoFMGw4D0pQJSOF4vJocMKm6P-TFNEN_SnC5y1wLnSYz3yzKezsNkceso6wbCcH7GHMTiUd5PllrNQE7thgsr-jokrzunsCyumrOFg8U5Fio33jOsL3yVweXjSTrU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<span class="bg-surface-container-highest text-tertiary px-3 py-1 rounded text-[10px] font-mono uppercase">Algorithms</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="font-headline text-xl mb-3">Huffman Algorithm</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex-1">Visualizing data compression. An interactive tool that builds Huffman Trees and encodes data using optimized C++ logic.</p>
+<div class="flex gap-2 mb-6 flex-wrap">
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">C++</span>
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">Data Structures</span>
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">Algorithm Design</span>
+
+
+</div>
+<a class="text-tertiary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link" href="https://github.com/abdelrahman-ah1/Huffman-Algorithm">
+                        Source Code
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">terminal</span>
+</a>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="bento-glass rounded-xl overflow-hidden flex flex-col group p-2">
+<div class="h-48 overflow-hidden relative rounded-lg">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" data-alt="cyber security visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP4oSXRDamEOqFSCQLkey9KvOZWDgP_6HvIJ0DXkziMnHTnLMu_F8tf15-7dsKS4o2DoZJfHDetsBB7L1YJ9o6AwLZ83Hg2NrfVBOBMN2wkvvui2AoTMBmT2bAbWgXP30ExZK6lEitRk_qmsu9NhVaxfD48NVUY7q27Yf0eij58b_KnpY9662kdq51LwQ_vckVOePK8ghTU3Oulc5FeXukxYwXjGo_8N8nvRJP0qUHuTb6bM6jFjz8QiMSWiwTq3jBlDXXdkzroUUN"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<span class="bg-surface-container-highest text-primary px-3 py-1 rounded text-[10px] font-mono uppercase">Security</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<h3 class="font-headline text-xl mb-3">Rail Fence Cipher Tool</h3>
+<p class="text-on-surface-variant text-sm mb-6 flex-1">Transposition cipher visualization with a zig-zag pattern. A security/algorithm implementation focusing on cryptography basics.</p>
+<div class="flex gap-2 mb-6 flex-wrap">
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">Algorithms</span>
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">Assembly</span>
+<span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">Security</span>
+</div>
+<a class="text-primary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link" href="https://github.com/abdelrahman-ah1/Rail-fence">
+                        View Demo
+                        <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">lock_open</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Engineering Timeline & Experience -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10" id="timeline">
+<!-- Academic Focus -->
+<div class="lg:col-span-5 bento-glass rounded-xl p-10 border-l-2 border-primary">
+<h3 class="font-headline text-lg uppercase tracking-tight mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">school</span> Academic Focus
+                </h3>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="text-primary font-mono text-lg font-bold">01</div>
+<div>
+<h4 class="font-headline text-sm uppercase">MIPS Architecture</h4>
+<p class="text-on-surface-variant text-xs font-mono">Datapath, Control Units, Stalls &amp; Hazards</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="text-primary font-mono text-lg font-bold">02</div>
+<div>
+<h4 class="font-headline text-sm uppercase">Digital Logic</h4>
+<p class="text-on-surface-variant text-xs font-mono">Logic Gates, MUX, Combinational Circuits</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="text-primary font-mono text-lg font-bold">03</div>
+<div>
+<h4 class="font-headline text-sm uppercase">Data Structures</h4>
+<p class="text-on-surface-variant text-xs font-mono">Backtracking, Recursion, Huffman coding</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="text-primary font-mono text-lg font-bold">04</div>
+<div>
+<h4 class="font-headline text-sm uppercase">OOSE (Object Oriented Software Engineering)</h4>
+<p class="text-on-surface-variant text-xs font-mono">Design Patterns, UML, SOLID Principles</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Experience Timeline -->
+<div class="lg:col-span-7 bento-glass rounded-xl p-10 border border-tertiary/20">
+<h3 class="font-headline text-lg uppercase tracking-tight mb-8">Engineering Journey</h3>
+<div class="space-y-12 relative before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant/30">
+    <div class="relative pl-10">
+        <div class="absolute left-0 top-1 w-5 h-5 rounded-full bg-surface-container border-2 border-tertiary z-10"></div>
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+                <div>
+                    <h4 class="font-headline text-xl">CS Undergrad (Year 2)</h4>
+                    <p class="text-tertiary font-label text-sm uppercase tracking-widest">MSA University</p>
+                </div>
+                <span class="font-mono text-xs bg-surface-container-high border border-tertiary/30 px-3 py-1 rounded text-tertiary">2024 — 2028</span>
+            </div>
+             <p class="text-on-surface-variant text-sm mt-4 leading-relaxed">Deep-diving into fundamental computer science principles. Currently maintaining a high honors standing with focus on core systems engineering, hardware architectures, and advanced algorithmic design.</p>
+            </div>
+        </div>
+<br>
+    <div class="relative pl-10">
+        <div class="absolute left-0 top-1 w-5 h-5 rounded-full bg-surface-container border-2 border-tertiary z-10"></div>
+            <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2">
+                <div>
+                    <h4 class="font-headline text-xl">Software Developer</h4>
+                    <p class="text-tertiary font-label text-sm uppercase tracking-widest">Zahra medical</p>
+                </div>
+                <span class="font-mono text-xs bg-surface-container-high border border-tertiary/30 px-3 py-1 rounded text-tertiary">2025 Dec. — present</span>
+            </div>
+             <p class="text-on-surface-variant text-sm mt-4 leading-relaxed">Working as a software developer at Zahra medical, contributing to the development of innovative healthcare solutions.</p>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-[#0e0e0e] border-t border-primary/10 mt-16">
+<div class="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-10 gap-6">
+<p class="font-mono text-xs uppercase tracking-widest text-gray-600">
+                © 2025 Abdel Rahman • Software Engineer
+            </p>
+<div class="flex gap-8">
+<a class="font-mono text-xs uppercase tracking-widest text-gray-600 hover:text-primary transition-colors" href="https://github.com/abdelrahman-ah1" target="_blank">GitHub</a>
+<a class="font-mono text-xs uppercase tracking-widest text-gray-600 hover:text-primary transition-colors" href="https://www.linkedin.com/in/abdelrahman-a-azeez" target="_blank">LinkedIn</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono text-[10px] text-tertiary uppercase tracking-widest">Available for Collaboration</span>
+</div>
+</div>
+</footer>
+</body></html>
