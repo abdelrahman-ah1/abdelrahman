@@ -99,6 +99,9 @@
     </style>
 </head>
 <body class="bg-surface-container-lowest text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-on-primary focus:rounded-lg focus:shadow-lg font-headline font-bold uppercase tracking-wider">
+    Skip to main content
+</a>
 <div class="fixed inset-0 scan-line z-50"></div>
 <!-- TopNavBar -->
 <header class="w-full top-0 sticky z-40 bg-transparent backdrop-blur-3xl shadow-[0_0_60px_rgba(160,32,240,0.05)]">
@@ -107,17 +110,17 @@
                 Abdel Rahman
             </div>
 <div class="hidden md:flex items-center gap-8">
-<a class="font-headline tracking-tighter uppercase font-bold text-sm text-primary border-b-2 border-primary pb-1 hover:opacity-80 transition-all duration-300" href="#home">Home</a>
-<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white transition-all duration-300" href="#projects">Projects</a>
-<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white transition-all duration-300" href="#skills">Skills</a>
-<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white transition-all duration-300" href="#timeline">Timeline</a>
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-primary border-b-2 border-primary pb-1 hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded transition-all duration-300" href="#home">Home</a>
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded transition-all duration-300" href="#projects">Projects</a>
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded transition-all duration-300" href="#skills">Skills</a>
+<a class="font-headline tracking-tighter uppercase font-bold text-sm text-gray-400 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded transition-all duration-300" href="#timeline">Timeline</a>
 </div>
 <div class="flex items-center gap-4">
 <span class="material-symbols-outlined text-primary scale-95 cursor-pointer">terminal</span>
 </div>
 </nav>
 </header>
-<main class="max-w-7xl mx-auto px-10 py-16">
+<main id="main-content" class="max-w-7xl mx-auto px-10 py-16">
 <!-- Hero Section & Terminal -->
 <section class="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-10" id="home">
 <div class="lg:col-span-7 flex flex-col justify-center">
@@ -129,12 +132,12 @@
                     CS Student @ MSA University <span class="text-tertiary mx-2">|</span> Competitive Programmer
                 </p>
 <div class="flex gap-4">
-<a href="#projects"><button class="bg-gradient-to-r from-primary-container to-secondary-container px-8 py-4 rounded-lg font-headline text-on-primary font-bold uppercase tracking-widest hover:scale-105 transition-transform">
-                        Explore Works
-                    </button></a>
-<a href="https://www.linkedin.com/in/abdelrahman-a-azeez" target="_blank"><button class="border border-outline-variant/30 px-8 py-4 rounded-lg font-headline text-on-surface font-bold uppercase tracking-widest hover:bg-surface-container-high transition-colors">
-                        Get in Touch
-                    </button></a>
+<a class="inline-block bg-gradient-to-r from-primary-container to-secondary-container px-8 py-4 rounded-lg font-headline text-on-primary font-bold uppercase tracking-widest hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-transform" href="#projects">
+    Explore Works
+</a>
+<a class="inline-block border border-outline-variant/30 px-8 py-4 rounded-lg font-headline text-on-surface font-bold uppercase tracking-widest hover:bg-surface-container-high focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors" href="https://www.linkedin.com/in/abdelrahman-a-azeez" target="_blank" rel="noopener noreferrer">
+    Get in Touch
+</a>
 </div>
 </div>
 <div class="lg:col-span-5">
@@ -245,7 +248,7 @@
 <!-- Project 1 -->
 <div class="bento-glass rounded-xl overflow-hidden flex flex-col group p-2">
 <div class="h-48 overflow-hidden relative rounded-lg">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" data-alt="modern medical dashboard interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIz2FM_WYsjsG_-_t1HRKbxaNuo3Gw3AJlH3Kk9cCU2-dFWy6ExagZKgUwZdKkQxAAQdQQTTujP_BxGCspy2yu2zMnUND1cTYpvzi6PYyn9OuMkaDzslSP5Cs2ncCHNM_ECxuhYeBSIuUq5rHGfReeGV54OH0uahwfNyvyjEFkx60mV1JkiuajFP7ZA2ai1EFS43XS0IpdYUYY2jp0R7L4eBI4eV7C6xi142hWZwBQEiSl8OmnqqyckuSFZkou52giWaeEIePvpsYi"/>
+<img alt="Modern medical dashboard interface" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIz2FM_WYsjsG_-_t1HRKbxaNuo3Gw3AJlH3Kk9cCU2-dFWy6ExagZKgUwZdKkQxAAQdQQTTujP_BxGCspy2yu2zMnUND1cTYpvzi6PYyn9OuMkaDzslSP5Cs2ncCHNM_ECxuhYeBSIuUq5rHGfReeGV54OH0uahwfNyvyjEFkx60mV1JkiuajFP7ZA2ai1EFS43XS0IpdYUYY2jp0R7L4eBI4eV7C6xi142hWZwBQEiSl8OmnqqyckuSFZkou52giWaeEIePvpsYi"/>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
 <div class="absolute bottom-4 left-6">
 <span class="bg-surface-container-highest text-primary-fixed-dim px-3 py-1 rounded text-[10px] font-mono uppercase">Full Stack</span>
@@ -259,7 +262,7 @@
 <span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">PHP</span>
 <span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">MySQL</span>
 </div>
-<a class="text-primary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link" href="https://abdelrahman-ah1.github.io/Zahra-medical/GUI%200.2" target="_blank">
+<a class="text-primary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="https://abdelrahman-ah1.github.io/Zahra-medical/GUI%200.2" target="_blank" rel="noopener noreferrer">
                         View Demo
                         <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
 </a>
@@ -268,7 +271,7 @@
 <!-- Project 2 -->
 <div class="bento-glass rounded-xl overflow-hidden flex flex-col group p-2 border-t border-tertiary/20">
 <div class="h-48 overflow-hidden relative rounded-lg">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" data-alt="digital tree graph visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1dtEC-EI4AAdGmJkypOzPGdTQU3MQmYVbjrBcmZ9BHd5V56hY4u4-dbAzOtjoqPGy1TXSvIOVmcvxxpdd60_D2YvDIg90NvzejUBnZg8ZqB32TuIg1emn-DzwlGqk2wVFXWEHAS1xgB75BsMUoFMGw4D0pQJSOF4vJocMKm6P-TFNEN_SnC5y1wLnSYz3yzKezsNkceso6wbCcH7GHMTiUd5PllrNQE7thgsr-jokrzunsCyumrOFg8U5Fio33jOsL3yVweXjSTrU"/>
+<img alt="Digital tree graph visualization" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1dtEC-EI4AAdGmJkypOzPGdTQU3MQmYVbjrBcmZ9BHd5V56hY4u4-dbAzOtjoqPGy1TXSvIOVmcvxxpdd60_D2YvDIg90NvzejUBnZg8ZqB32TuIg1emn-DzwlGqk2wVFXWEHAS1xgB75BsMUoFMGw4D0pQJSOF4vJocMKm6P-TFNEN_SnC5y1wLnSYz3yzKezsNkceso6wbCcH7GHMTiUd5PllrNQE7thgsr-jokrzunsCyumrOFg8U5Fio33jOsL3yVweXjSTrU"/>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
 <div class="absolute bottom-4 left-6">
 <span class="bg-surface-container-highest text-tertiary px-3 py-1 rounded text-[10px] font-mono uppercase">Algorithms</span>
@@ -284,7 +287,7 @@
 
 
 </div>
-<a class="text-tertiary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link" href="https://github.com/abdelrahman-ah1/Huffman-Algorithm" target="_blank">
+<a class="text-tertiary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tertiary rounded" href="https://github.com/abdelrahman-ah1/Huffman-Algorithm" target="_blank" rel="noopener noreferrer">
                         Source Code
                         <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">terminal</span>
 </a>
@@ -293,7 +296,7 @@
 <!-- Project 3 -->
 <div class="bento-glass rounded-xl overflow-hidden flex flex-col group p-2">
 <div class="h-48 overflow-hidden relative rounded-lg">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" data-alt="cyber security visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP4oSXRDamEOqFSCQLkey9KvOZWDgP_6HvIJ0DXkziMnHTnLMu_F8tf15-7dsKS4o2DoZJfHDetsBB7L1YJ9o6AwLZ83Hg2NrfVBOBMN2wkvvui2AoTMBmT2bAbWgXP30ExZK6lEitRk_qmsu9NhVaxfD48NVUY7q27Yf0eij58b_KnpY9662kdq51LwQ_vckVOePK8ghTU3Oulc5FeXukxYwXjGo_8N8nvRJP0qUHuTb6bM6jFjz8QiMSWiwTq3jBlDXXdkzroUUN"/>
+<img alt="Cyber security visualization" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP4oSXRDamEOqFSCQLkey9KvOZWDgP_6HvIJ0DXkziMnHTnLMu_F8tf15-7dsKS4o2DoZJfHDetsBB7L1YJ9o6AwLZ83Hg2NrfVBOBMN2wkvvui2AoTMBmT2bAbWgXP30ExZK6lEitRk_qmsu9NhVaxfD48NVUY7q27Yf0eij58b_KnpY9662kdq51LwQ_vckVOePK8ghTU3Oulc5FeXukxYwXjGo_8N8nvRJP0qUHuTb6bM6jFjz8QiMSWiwTq3jBlDXXdkzroUUN"/>
 <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
 <div class="absolute bottom-4 left-6">
 <span class="bg-surface-container-highest text-primary px-3 py-1 rounded text-[10px] font-mono uppercase">Security</span>
@@ -307,7 +310,7 @@
 <span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">Assembly</span>
 <span class="text-[10px] font-mono text-outline px-2 py-1 bg-surface-container border border-outline-variant/30 rounded">Security</span>
 </div>
-<a class="text-primary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link" href="https://github.com/abdelrahman-ah1/Rail-fence" target="_blank">
+<a class="text-primary text-sm font-headline uppercase tracking-widest flex items-center gap-2 group/link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded" href="https://github.com/abdelrahman-ah1/Rail-fence" target="_blank" rel="noopener noreferrer">
                         Source Code
                         <span class="material-symbols-outlined text-sm group-hover/link:translate-x-1 transition-transform">lock_open</span>
 </a>
@@ -391,8 +394,8 @@
                 © 2025 Abdel Rahman • Software Engineer
             </p>
 <div class="flex gap-8">
-<a class="font-mono text-xs uppercase tracking-widest text-gray-600 hover:text-primary transition-colors" href="https://github.com/abdelrahman-ah1" target="_blank">GitHub</a>
-<a class="font-mono text-xs uppercase tracking-widest text-gray-600 hover:text-primary transition-colors" href="https://www.linkedin.com/in/abdelrahman-a-azeez" target="_blank">LinkedIn</a>
+<a class="font-mono text-xs uppercase tracking-widest text-gray-600 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded transition-colors" href="https://github.com/abdelrahman-ah1" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a class="font-mono text-xs uppercase tracking-widest text-gray-600 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded transition-colors" href="https://www.linkedin.com/in/abdelrahman-a-azeez" target="_blank" rel="noopener noreferrer">LinkedIn</a>
 </div>
 <div class="flex items-center gap-2">
 <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
