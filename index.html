@@ -9,20 +9,21 @@
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="apple-touch-icon" href="assets/favicon.png" />
     <meta name="description"
-        content="Portfolio of Abdelrahman Ahmed Abdelazeez — Software Engineer & Computer Science student specializing in Web Platforms, C++ Algorithms, IoT, and System Architecture." />
+        content="Portfolio of Abdelrahman Ahmed Abdelazeez — Software Engineer specializing in C++ algorithms, full-stack systems, and reliable web platforms." />
+    <link rel="canonical" href="https://abdelrahman1.me/" />
     <!-- Open Graph / Link Preview -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://abdelrahman-ah1.github.io/abdelrahman/" />
+    <meta property="og:url" content="https://abdelrahman1.me/" />
     <meta property="og:title" content="Abdelrahman Ahmed Abdelazeez | Software Engineer" />
-    <meta property="og:description" content="Software Engineer & CS undergrad at MSA University. Full-stack web, C++ algorithms, IoT." />
-    <meta property="og:image" content="https://abdelrahman-ah1.github.io/abdelrahman/assets/og-preview.png" />
+    <meta property="og:description" content="Software Engineer specializing in C++ algorithms, full-stack systems, and reliable web platforms." />
+    <meta property="og:image" content="https://abdelrahman1.me/assets/og-preview.png" />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Abdelrahman Ahmed Abdelazeez | Software Engineer" />
-    <meta name="twitter:description" content="Software Engineer & CS undergrad at MSA University. Full-stack web, C++ algorithms, IoT." />
-    <meta name="twitter:image" content="https://abdelrahman-ah1.github.io/abdelrahman/assets/og-preview.png" />
+    <meta name="twitter:description" content="Software Engineer specializing in C++ algorithms, full-stack systems, and reliable web platforms." />
+    <meta name="twitter:image" content="https://abdelrahman1.me/assets/og-preview.png" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -185,6 +186,17 @@
             scrollbar-width: thin;
             scrollbar-color: #1E2536 #0F1420;
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
@@ -229,20 +241,28 @@
 
             <div class="flex items-center gap-2 sm:gap-3">
                 <a href="https://github.com/abdelrahman-ah1" target="_blank" rel="noopener noreferrer"
-                    class="p-2 rounded border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all"
+                    aria-label="Open GitHub profile"
+                    class="p-2 rounded border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     title="GitHub: abdelrahman-ah1">
                     <span class="material-symbols-outlined text-sm">code</span>
                 </a>
                 <a href="https://www.linkedin.com/in/abdelrahman-a-azeez" target="_blank" rel="noopener noreferrer"
-                    class="p-2 rounded border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all"
+                    aria-label="Open LinkedIn profile"
+                    class="p-2 rounded border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     title="LinkedIn">
                     <span class="material-symbols-outlined text-sm">person</span>
                 </a>
-                <button onclick="copyToClipboard('abdelrahmanah06@gmail.com', 'Copied Email to clipboard!')"
-                    class="p-2 rounded border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all"
-                    title="Copy Email: abdelrahmanah06@gmail.com">
-                    <span class="material-symbols-outlined text-sm">content_copy</span>
-                </button>
+                <a href="mailto:abdelrahmanah06@gmail.com"
+                    class="p-2 rounded border border-outline-variant/30 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    aria-label="Email Abdelrahman Ahmed" title="Email: abdelrahmanah06@gmail.com">
+                    <span class="material-symbols-outlined text-sm">mail</span>
+                </a>
+                <a href="assets/Abdelrahman-Ahmed-CV.pdf" download
+                    class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded border border-tertiary/30 text-tertiary hover:bg-tertiary/10 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tertiary text-xs font-mono uppercase"
+                    aria-label="Download CV">
+                    <span class="material-symbols-outlined text-sm">download</span>
+                    <span>CV</span>
+                </a>
             </div>
         </nav>
     </header>
@@ -254,8 +274,8 @@
                 <div
                     class="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-surface-container border border-primary/20 w-fit">
                     <span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
-                    <span class="font-mono text-xs uppercase tracking-widest text-on-surface-variant">Available for
-                        Engineering Opportunities</span>
+                    <span class="font-mono text-xs uppercase tracking-widest text-on-surface-variant">Available from:
+                        immediately · internships &amp; junior roles</span>
                 </div>
                 <h1
                     class="font-headline text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] mb-6">
@@ -266,12 +286,11 @@
                 </h1>
                 <p
                     class="font-label text-on-surface-variant text-base sm:text-lg md:text-xl uppercase tracking-widest mb-4">
-                    Software Engineer <span class="text-tertiary mx-2">|</span> CS Undergrad @ MSA University
+                    Software Engineer specializing in C++ algorithms &amp; full-stack systems
                 </p>
                 <p class="text-on-surface-variant text-sm md:text-base max-w-xl mb-8 leading-relaxed">
-                    Engineering resilient, high-efficiency digital solutions across full-stack web platforms, optimized
-                    C++
-                    algorithmic pipelines, microcontrollers, and IoT systems.
+                    I build reliable software with a focus on C++ algorithms, full-stack web platforms, and measurable
+                    system performance. IoT and embedded engineering are supporting strengths.
                 </p>
                 <div class="flex flex-wrap items-center gap-4">
                     <a class="inline-flex items-center gap-2 bg-gradient-to-r from-primary-container to-secondary-container px-6 py-3.5 rounded-lg font-headline text-on-primary font-bold uppercase tracking-wider text-sm hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-transform shadow-lg shadow-primary/20"
@@ -279,12 +298,24 @@
                         <span>Explore Projects</span>
                         <span class="material-symbols-outlined text-sm">arrow_forward</span>
                     </a>
-                    <button
-                        onclick="copyToClipboard('abdelrahmanah06@gmail.com', 'Copied abdelrahmanah06@gmail.com to clipboard!')"
+                    <a
+                        href="mailto:abdelrahmanah06@gmail.com"
                         class="inline-flex items-center gap-2 border border-outline-variant/30 px-6 py-3.5 rounded-lg font-headline text-on-surface font-bold uppercase tracking-wider text-sm hover:bg-surface-container-high hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors">
                         <span class="material-symbols-outlined text-sm text-primary">mail</span>
-                        <span>Copy Email</span>
-                    </button>
+                        <span>Email Me</span>
+                    </a>
+                    <a
+                        href="assets/Abdelrahman-Ahmed-CV.pdf" download
+                        class="inline-flex items-center gap-2 border border-tertiary/30 text-tertiary px-6 py-3.5 rounded-lg font-headline font-bold uppercase tracking-wider text-sm hover:bg-tertiary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tertiary transition-colors">
+                        <span class="material-symbols-outlined text-sm">download</span>
+                        <span>Download CV</span>
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/abdelrahman-a-azeez" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 border border-outline-variant/30 px-6 py-3.5 rounded-lg font-headline text-on-surface font-bold uppercase tracking-wider text-sm hover:bg-surface-container-high hover:border-primary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-colors">
+                        <span class="material-symbols-outlined text-sm text-primary">person</span>
+                        <span>LinkedIn</span>
+                    </a>
                     <a class="inline-flex items-center gap-2 border border-tertiary/30 text-tertiary px-6 py-3.5 rounded-lg font-headline font-bold uppercase tracking-wider text-sm hover:bg-tertiary/10 transition-colors"
                         href="https://github.com/abdelrahman-ah1" target="_blank" rel="noopener noreferrer">
                         <span class="material-symbols-outlined text-sm">terminal</span>
@@ -299,12 +330,12 @@
                     <div
                         class="bg-surface-container-highest/70 px-4 py-2.5 flex items-center justify-between border-b border-white/5">
                         <div class="flex items-center gap-2">
-                            <div class="w-3 h-3 rounded-full bg-error cursor-pointer" onclick="clearTerminal()"
-                                title="Clear"></div>
-                            <div class="w-3 h-3 rounded-full bg-tertiary cursor-pointer" onclick="runCommand('help')"
-                                title="Help"></div>
-                            <div class="w-3 h-3 rounded-full bg-primary cursor-pointer" onclick="runCommand('whoami')"
-                                title="Whoami"></div>
+                            <button type="button" class="w-3 h-3 rounded-full bg-error cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-error"
+                                onclick="clearTerminal()" aria-label="Clear terminal" title="Clear"></button>
+                            <button type="button" class="w-3 h-3 rounded-full bg-tertiary cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-tertiary"
+                                onclick="runCommand('help')" aria-label="Show terminal help" title="Help"></button>
+                            <button type="button" class="w-3 h-3 rounded-full bg-primary cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                                onclick="runCommand('whoami')" aria-label="Show profile in terminal" title="Whoami"></button>
                         </div>
                         <span
                             class="text-[11px] font-mono text-on-surface-variant opacity-75 uppercase tracking-widest flex items-center gap-1">
@@ -354,6 +385,25 @@
                             class="text-[10px] font-mono text-primary uppercase font-bold hover:underline">Execute</button>
                     </form>
                 </div>
+            </div>
+        </section>
+
+        <section aria-label="At a glance" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-16">
+            <div class="bento-glass rounded-lg px-4 py-4">
+                <strong class="block text-primary font-headline text-2xl">65</strong>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">SRS requirements</span>
+            </div>
+            <div class="bento-glass rounded-lg px-4 py-4">
+                <strong class="block text-tertiary font-headline text-2xl">7</strong>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">RBAC user roles</span>
+            </div>
+            <div class="bento-glass rounded-lg px-4 py-4">
+                <strong class="block text-secondary font-headline text-2xl">O(N)</strong>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">Huffman preprocessing</span>
+            </div>
+            <div class="bento-glass rounded-lg px-4 py-4">
+                <strong class="block text-tertiary font-headline text-2xl">1st</strong>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-on-surface-variant">Deep Minds place</span>
             </div>
         </section>
 
@@ -595,7 +645,7 @@
                     <div class="h-44 overflow-hidden relative rounded-lg bg-surface-container-high">
                         <img alt="Zahra Medical precision maintenance portal interface"
                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                            src="assets/zahra-medical.png" />
+                            src="assets/zahra-medical.png" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw" />
                         <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-3 left-4 flex gap-2">
@@ -663,7 +713,11 @@
                                 <span
                                     class="material-symbols-outlined text-xs group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
                             </a>
-                            <span class="font-mono text-[10px] text-on-surface-variant">Sep 2025 – Apr 2026</span>
+                            <div class="flex items-center gap-3">
+                                <a class="text-on-surface-variant text-xs hover:text-primary" href="https://github.com/abdelrahman-ah1/ZahraMedical"
+                                    target="_blank" rel="noopener noreferrer">Source</a>
+                                <span class="font-mono text-[10px] text-on-surface-variant">Sep 2025 – Apr 2026</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -674,7 +728,7 @@
                     <div class="h-44 overflow-hidden relative rounded-lg bg-surface-container-high">
                         <img alt="Huffman Tree compression and frequency analysis data structure diagram"
                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                            src="assets/huffman.png" />
+                            src="assets/huffman.png" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw" />
                         <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-3 left-4 flex gap-2">
@@ -742,7 +796,7 @@
                                 <span
                                     class="material-symbols-outlined text-xs group-hover/link:translate-x-1 transition-transform">terminal</span>
                             </a>
-                            <span class="font-mono text-[10px] text-on-surface-variant">GitHub Repo</span>
+                            <span class="font-mono text-[10px] text-on-surface-variant">Source · GitHub</span>
                         </div>
                     </div>
                 </div>
@@ -753,7 +807,7 @@
                     <div class="h-44 overflow-hidden relative rounded-lg bg-surface-container-high">
                         <img alt="Cryptographic cipher and transposition pattern visualization"
                             class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                            src="assets/rail-fence.png" />
+                            src="assets/rail-fence.png" loading="lazy" decoding="async" sizes="(max-width: 768px) 100vw, 33vw" />
                         <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent">
                         </div>
                         <div class="absolute bottom-3 left-4 flex gap-2">
@@ -854,6 +908,10 @@
                     <span
                         class="text-xs font-mono px-3 py-1.5 bg-surface-container-high border border-outline-variant/30 rounded text-on-surface text-center">Proteus
                         Simulation</span>
+                    <a href="https://github.com/abdelrahman-ah1/Green-IAP" target="_blank" rel="noopener noreferrer"
+                        class="text-xs font-mono px-3 py-1.5 border border-primary/30 rounded text-primary text-center hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                        Source Code
+                    </a>
                 </div>
             </div>
         </section>
@@ -1013,7 +1071,7 @@
     </main>
 
     <!-- Floating Back to Top Button -->
-    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top"
         class="fixed bottom-6 left-6 z-40 p-3 rounded-full bg-surface-container-high/90 border border-primary/40 text-primary opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 hover:border-primary shadow-lg"
         title="Back to Top">
         <span class="material-symbols-outlined text-sm">arrow_upward</span>
@@ -1026,10 +1084,13 @@
                 <div>
                     <h3 class="font-headline text-lg font-bold text-white">Abdelrahman Ahmed Abdelazeez</h3>
                     <p class="font-mono text-xs text-on-surface-variant mt-1">Giza, Egypt • +20 11 4444 9596</p>
-                    <button onclick="copyToClipboard('abdelrahmanah06@gmail.com', 'Copied Email!')"
-                        class="font-mono text-xs text-primary hover:underline block mt-0.5 text-left">
-                        abdelrahmanah06@gmail.com (click to copy)
-                    </button>
+                    <a href="mailto:abdelrahmanah06@gmail.com"
+                        class="font-mono text-xs text-primary hover:underline block mt-0.5">
+                        abdelrahmanah06@gmail.com
+                    </a>
+                    <a href="assets/Abdelrahman-Ahmed-CV.pdf" download class="font-mono text-xs text-tertiary hover:underline block mt-1">
+                        Download CV
+                    </a>
                 </div>
                 <div class="flex justify-start md:justify-center gap-6">
                     <a class="font-mono text-xs uppercase tracking-wider text-gray-400 hover:text-primary transition-colors flex items-center gap-1"
