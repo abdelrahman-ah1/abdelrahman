@@ -53,6 +53,7 @@ nav{position:relative}nav a{position:relative;z-index:1}
 #theme:hover{color:var(--ink);border-color:var(--muted)}
 #language{font:inherit;font-size:14px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer;margin-left:6px;transition:border-color .2s,color .2s}
 #language:hover{color:var(--ink);border-color:var(--muted)}
+.keyboard-help{color:var(--muted);font-size:12px;white-space:nowrap}
 
 /* Hero, one orchestrated entrance */
 .hero{padding:96px 0 112px}
@@ -237,6 +238,7 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
       <a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
       <button id="theme" type="button" aria-label="Switch colour theme">Theme</button>
       <button id="language" type="button" aria-label="Switch to Egyptian Arabic">العربية</button>
+      <span class="keyboard-help" id="keyboard-help" aria-label="Keyboard shortcuts">Keyboard: g then w/e/s/c</span>
     </nav>
   </div>
 </header>
@@ -393,6 +395,7 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
       languageAria:'Switch to Egyptian Arabic',
       theme:'Theme',
       themeAria:'Switch colour theme',
+      keyboardHelp:'Keyboard: g then w/e/s/c',
       status:'Open to engineering opportunities',
       lead:'I design, document and build web systems for real clients, from a medical company\'s website to a real-time restaurant POS. I\'m a computer science student at MSA University and vice president of a 280-member competitive programming club.',
       seeWork:'See my work',
@@ -446,6 +449,7 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
       languageAria:'Switch to English',
       theme:'الوضع',
       themeAria:'غيّر الوضع اللوني',
+      keyboardHelp:'اختصارات: g ثم w/e/s/c',
       status:'متاح لفرص هندسة البرمجيات',
       lead:'بصمم وبوثّق وببني أنظمة ويب لعملاء حقيقيين، من موقع شركة أجهزة طبية لنظام نقاط بيع للمطاعم بيشتغل في الوقت الحقيقي. أنا طالب علوم حاسب في جامعة أكتوبر للعلوم الحديثة والآداب، ونائب رئيس نادي البرمجة التنافسية اللي فيه ٢٨٠ عضو.',
       seeWork:'شوف شغلي',
@@ -506,6 +510,7 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
     languageButton.setAttribute('aria-label',t.languageAria);
     setText('#theme',t.theme);
     document.getElementById('theme').setAttribute('aria-label',t.themeAria);
+    setText('#keyboard-help',t.keyboardHelp);
     setText('.status',t.status);setText('.lead',t.lead);setText('.btn.primary',t.seeWork);
     setText('[data-copy]',t.copy);setText('a[download]',t.download);setText('#local-label',t.local);
     setText('.work-head h2',t.workTitle);setText('.work-head p',t.workIntro);
@@ -520,6 +525,30 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
   try{savedLanguage=localStorage.getItem('language')==='ar'?'ar':'en'}catch(e){}
   applyLanguage(savedLanguage);
   languageButton.addEventListener('click',function(){applyLanguage(document.documentElement.lang==='ar-EG'?'en':'ar')});
+  var shortcutPending=false,shortcutTimer=0;
+  var shortcutTargets={w:'work',e:'experience',s:'skills',c:'contact'};
+  addEventListener('keydown',function(e){
+    if(e.ctrlKey||e.altKey||e.metaKey||e.shiftKey)return;
+    var target=e.target;
+    if(target&&target.closest&&target.closest('input,textarea,select,button,[contenteditable="true"]'))return;
+    var key=e.key.toLowerCase();
+    if(shortcutPending&&shortcutTargets[key]){
+      e.preventDefault();
+      shortcutPending=false;
+      clearTimeout(shortcutTimer);
+      var section=document.getElementById(shortcutTargets[key]);
+      if(section)section.scrollIntoView({behavior:calm?'auto':'smooth'});
+      return;
+    }
+    if(key==='g'){
+      shortcutPending=true;
+      clearTimeout(shortcutTimer);
+      shortcutTimer=setTimeout(function(){shortcutPending=false},1000);
+    }else{
+      shortcutPending=false;
+      clearTimeout(shortcutTimer);
+    }
+  });
   function T(x,y,t,a){return '<text class="svgt" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+t+'</text>'}
   var viz={};
   (function(){
