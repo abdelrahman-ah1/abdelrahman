@@ -46,6 +46,12 @@ section{padding:72px 0;border-top:1px solid var(--line)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:30px}
 .card{padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
 .card p{margin:0;color:var(--muted)}
+.srs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:30px}
+.srs-card{padding:22px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.srs-card h3{margin-bottom:12px}
+.srs-card ul{margin:0;padding-left:20px}.srs-card li{margin:0 0 10px}
+.srs-card li:last-child{margin-bottom:0}
+.srs-card code{padding:1px 5px;border:1px solid var(--line);border-radius:4px;background:var(--tint);font-size:.9em}
 .details{display:grid;grid-template-columns:220px 1fr;gap:36px}
 .details ul{margin:0;padding-left:22px}.details li{margin:0 0 12px}
 .stack{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
@@ -58,6 +64,7 @@ footer{padding:24px 0 36px;color:var(--muted);font-size:14px}
 html[dir="rtl"] .details{grid-template-columns:1fr 220px}
 html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
 @media (max-width:700px){header .wrap{align-items:flex-start;flex-direction:column;padding-top:14px;padding-bottom:14px}main{padding-top:48px}.grid,.gallery,.details,html[dir="rtl"] .details{grid-template-columns:1fr;gap:14px}section{padding:52px 0}}
+@media (max-width:700px){.srs-grid{grid-template-columns:1fr;gap:14px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto}}
 </style>
 </head>
@@ -133,6 +140,54 @@ html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
     </div>
   </section>
 
+  <section>
+    <div class="wrap">
+      <h2 data-i18n="srsTitle">SRS v1.0 scope</h2>
+      <p class="intro" data-i18n="srsIntro">The implementation scope is organized into four phases, from tenant-aware restaurant operations to resilient hardware and inventory workflows.</p>
+      <div class="srs-grid">
+        <article class="srs-card">
+          <h3 data-i18n="phase1Title">Phase 1 · Multi-tenant POS and table management</h3>
+          <ul>
+            <li data-i18n="phase1a">Multi-tenant data model: tenants → branches → tables / menu_items / orders / payments.</li>
+            <li data-i18n="phase1b">REST API for menu, tables, orders, items, and status progression.</li>
+            <li data-i18n="phase1c">Table floorplan tracking with available, occupied, and dirty states.</li>
+          </ul>
+        </article>
+        <article class="srs-card">
+          <h3 data-i18n="phase2Title">Phase 2 · KDS and real-time sync</h3>
+          <ul>
+            <li data-i18n="phase2a">Local WebSocket hub delivers order updates in <strong>&lt;1 second</strong> with zero polling over the branch LAN.</li>
+            <li data-i18n="phase2b">Order lifecycle: placed → in_prep → ready → served, with auto-closing when all lines are served.</li>
+            <li data-i18n="phase2c">KDS Audio Arrival Alert (FR-3.6): synthesized Web Audio API order-arrival chime.</li>
+            <li data-i18n="phase2d">WebSocket State Resync Hardening (FR-4.3): automatic active-order reconciliation after reconnecting.</li>
+            <li data-i18n="phase2e">Offline Outbox &amp; Replay Queue (FR-4.4): buffers writes during WAN outages and reconciles them to cloud on reconnect.</li>
+          </ul>
+        </article>
+        <article class="srs-card">
+          <h3 data-i18n="phase3Title">Phase 3 · Hardware integration (FR-5.1–FR-5.5)</h3>
+          <ul>
+            <li data-i18n="phase3a">ESC/POS generator and network TCP port 9100 bridge: formats and streams raw ESC/POS binary to thermal receipt printers.</li>
+            <li data-i18n="phase3b">Automated Kitchen Ticket Printing (FR-5.1): dispatched immediately on order placement.</li>
+            <li data-i18n="phase3c">Customer Tax Receipt Printing (FR-5.2): dispatched on payment completion with itemization and VAT.</li>
+            <li data-i18n="phase3d">Cash Drawer Solenoid Kick (FR-5.3): automated pulse command ESC p 0 25 250 on cash payments.</li>
+            <li data-i18n="phase3e">Payment Idempotency (NFR-8): client-generated idempotency_key prevents duplicate charges.</li>
+            <li data-i18n="phase3f">Interactive Hardware Spooler Modal: live formatted thermal receipt previews plus manual kicks and test prints.</li>
+          </ul>
+        </article>
+        <article class="srs-card">
+          <h3 data-i18n="phase4Title">Phase 4 · Inventory, recipes, EOD, and add-ons (FR-6.1–FR-6.5)</h3>
+          <ul>
+            <li data-i18n="phase4a">Recipe Management (FR-6.1): maps menu items to raw ingredient quantities.</li>
+            <li data-i18n="phase4b">Stock Auto-Deduction (FR-6.2): automatically depletes ingredient quantities when orders are placed.</li>
+            <li data-i18n="phase4c">Low-Stock Alerts (FR-6.3): visual warnings and WebSocket broadcast alerts below threshold.</li>
+            <li data-i18n="phase4d">End-of-Day Reconciliation Report (FR-6.4): gross/net revenue, VAT, cash vs card tender split, voids, and theoretical ingredient depletion.</li>
+            <li data-i18n="phase4e">QR-Code Table Self-Ordering (FR-6.5): dedicated mobile guest ordering view at /order/:branchId/:tableId.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <section class="contact">
     <div class="wrap">
       <h2 data-i18n="contactTitle">Want to talk through the build?</h2>
@@ -168,6 +223,11 @@ html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
       detail2:'The live kitchen path uses WebSockets for sub-second updates, with automatic resync to restore the current state after reconnecting.',
       detail3:'The offline outbox separates user intent from network availability, so temporary connectivity loss does not silently discard an order action.',
       detail4:'The project combines a React interface, a Node.js service layer, MongoDB persistence, and operational feedback from the kitchen display.',
+      srsTitle:'SRS v1.0 scope',srsIntro:'The implementation scope is organized into four phases, from tenant-aware restaurant operations to resilient hardware and inventory workflows.',
+      phase1Title:'Phase 1 · Multi-tenant POS and table management',phase1a:'Multi-tenant data model: tenants → branches → tables / menu_items / orders / payments.',phase1b:'REST API for menu, tables, orders, items, and status progression.',phase1c:'Table floorplan tracking with available, occupied, and dirty states.',
+      phase2Title:'Phase 2 · KDS and real-time sync',phase2a:'Local WebSocket hub delivers order updates in <1 second with zero polling over the branch LAN.',phase2b:'Order lifecycle: placed → in_prep → ready → served, with auto-closing when all lines are served.',phase2c:'KDS Audio Arrival Alert (FR-3.6): synthesized Web Audio API order-arrival chime.',phase2d:'WebSocket State Resync Hardening (FR-4.3): automatic active-order reconciliation after reconnecting.',phase2e:'Offline Outbox & Replay Queue (FR-4.4): buffers writes during WAN outages and reconciles them to cloud on reconnect.',
+      phase3Title:'Phase 3 · Hardware integration (FR-5.1–FR-5.5)',phase3a:'ESC/POS generator and network TCP port 9100 bridge: formats and streams raw ESC/POS binary to thermal receipt printers.',phase3b:'Automated Kitchen Ticket Printing (FR-5.1): dispatched immediately on order placement.',phase3c:'Customer Tax Receipt Printing (FR-5.2): dispatched on payment completion with itemization and VAT.',phase3d:'Cash Drawer Solenoid Kick (FR-5.3): automated pulse command ESC p 0 25 250 on cash payments.',phase3e:'Payment Idempotency (NFR-8): client-generated idempotency_key prevents duplicate charges.',phase3f:'Interactive Hardware Spooler Modal: live formatted thermal receipt previews plus manual kicks and test prints.',
+      phase4Title:'Phase 4 · Inventory, recipes, EOD, and add-ons (FR-6.1–FR-6.5)',phase4a:'Recipe Management (FR-6.1): maps menu items to raw ingredient quantities.',phase4b:'Stock Auto-Deduction (FR-6.2): automatically depletes ingredient quantities when orders are placed.',phase4c:'Low-Stock Alerts (FR-6.3): visual warnings and WebSocket broadcast alerts below threshold.',phase4d:'End-of-Day Reconciliation Report (FR-6.4): gross/net revenue, VAT, cash vs card tender split, voids, and theoretical ingredient depletion.',phase4e:'QR-Code Table Self-Ordering (FR-6.5): dedicated mobile guest ordering view at /order/:branchId/:tableId.',
       contactTitle:'Want to talk through the build?',contactText:'I can walk through the order lifecycle, reconnect behavior, or the inventory model.',contactButton:'Start a conversation',profile:'View GitHub profile',
       footer:'© 2026 Abdelrahman Ahmed Abdelazeez · '
     },
@@ -188,6 +248,11 @@ html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
       detail2:'مسار المطبخ بيستخدم WebSockets لتحديثات أقل من ثانية، مع إعادة مزامنة تلقائية لاسترجاع الحالة الحالية بعد إعادة الاتصال.',
       detail3:'الصندوق الأوفلاين بيفصل نية المستخدم عن توفر الشبكة، فمشاكل الاتصال المؤقتة ما بتضيعش عملية طلب من غير ما حد يعرف.',
       detail4:'المشروع بيجمع واجهة React، وطبقة خدمة Node.js، وتخزين MongoDB، وملاحظات التشغيل من شاشة المطبخ.',
+      srsTitle:'نطاق SRS v1.0',srsIntro:'نطاق التنفيذ متقسم لأربع مراحل، من تشغيل المطعم متعدد المستأجرين لحد تكامل الأجهزة وسير عمل المخزون الموثوق.',
+      phase1Title:'المرحلة ١ · نظام POS متعدد المستأجرين وإدارة الطاولات',phase1a:'نموذج بيانات متعدد المستأجرين: tenants ← branches ← tables / menu_items / orders / payments.',phase1b:'REST API للقائمة والطاولات والطلبات والعناصر وتقدم الحالة.',phase1c:'متابعة مخطط الطاولات بحالات متاحة ومشغولة ومتسخة.',
+      phase2Title:'المرحلة ٢ · شاشة المطبخ والمزامنة الفورية',phase2a:'مركز WebSocket محلي بيوصل تحديثات الطلبات في أقل من ثانية ومن غير polling على شبكة الفرع.',phase2b:'دورة الطلب: placed → in_prep → ready → served، مع إغلاق تلقائي لما كل العناصر تتقدم.',phase2c:'تنبيه وصول الطلب لشاشة المطبخ (FR-3.6): نغمة وصول مولّدة باستخدام Web Audio API.',phase2d:'تقوية إعادة مزامنة WebSocket (FR-4.3): مطابقة تلقائية للطلبات النشطة بعد إعادة الاتصال.',phase2e:'صندوق العمليات الأوفلاين وطابور الإعادة (FR-4.4): يحفظ الكتابات وقت انقطاع WAN ويزامنها مع السحابة بعد الاتصال.',
+      phase3Title:'المرحلة ٣ · تكامل الأجهزة (FR-5.1–FR-5.5)',phase3a:'مولّد ESC/POS وجسر الشبكة على TCP port 9100: ينسّق ويرسل بيانات ESC/POS الخام لطابعات الإيصالات الحرارية.',phase3b:'طباعة تذكرة المطبخ تلقائيًا (FR-5.1): تُرسل فور تسجيل الطلب.',phase3c:'طباعة إيصال الضريبة للعميل (FR-5.2): تُرسل بعد إتمام الدفع مع التفاصيل وضريبة القيمة المضافة.',phase3d:'نبضة فتح درج الكاشير (FR-5.3): الأمر ESC p 0 25 250 تلقائيًا مع الدفع النقدي.',phase3e:'منع تكرار الدفع (NFR-8): idempotency_key ينشئه العميل لمنع الخصم المكرر.',phase3f:'نافذة طابور الأجهزة التفاعلية: معاينة الإيصال الحراري المنسق وتشغيل الفتح أو اختبار الطباعة يدويًا.',
+      phase4Title:'المرحلة ٤ · المخزون والوصفات ونهاية اليوم والإضافات (FR-6.1–FR-6.5)',phase4a:'إدارة الوصفات (FR-6.1): ربط عناصر القائمة بكميات المكونات الخام.',phase4b:'خصم المخزون تلقائيًا (FR-6.2): تقليل كميات المكونات تلقائيًا عند تسجيل الطلبات.',phase4c:'تنبيهات انخفاض المخزون (FR-6.3): تحذيرات مرئية وتنبيهات WebSocket عند النزول تحت الحد.',phase4d:'تقرير مطابقة نهاية اليوم (FR-6.4): إجمالي وصافي الإيراد، والضريبة، وتقسيم النقدي مقابل البطاقة، والإلغاءات، والاستهلاك النظري للمكونات.',phase4e:'الطلب الذاتي من الطاولة بالـ QR (FR-6.5): واجهة موبايل للضيف على المسار /order/:branchId/:tableId.',
       contactTitle:'حابب نتكلم عن المشروع؟',contactText:'أقدر أشرح دورة الطلب، والتعامل مع إعادة الاتصال، أو نموذج المخزون.',contactButton:'ابدأ محادثة',profile:'شوف حساب GitHub',
       footer:'© ٢٠٢٦ عبدالرحمن أحمد عبدالعزيز · '
     }
