@@ -296,7 +296,7 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
             <h3>2D arcade game</h3>
             <p>A Windows Forms game with sprite-sheet rendering, character state transitions and axis-aligned collision detection.</p>
             <span class="meta">C#, Windows Forms Â· May 2026 Â· <a href="https://github.com/abdelrahman-ah1">GitHub</a></span>
-            <figure class="pic"><svg viewBox="0 0 600 330" data-viz="arcade" role="img" aria-label="Two overlapping boxes showing collision detection"></svg></figure>
+            <figure class="pic"><img id="arcade-preview" src="assets/arcade-game.webp" alt="2D arcade game screenshot showing sprite-based gameplay" data-alt-en="2D arcade game screenshot showing sprite-based gameplay" data-alt-ar="لقطة من لعبة أركيد ثنائية الأبعاد توضّح اللعب المعتمد على الشخصيات المتحركة" loading="lazy"><figcaption id="arcade-caption" data-caption-en="Sprite-sheet gameplay and character movement." data-caption-ar="لعب باستخدام مجموعات الشخصيات وحركة الشخصية.">Sprite-sheet gameplay and character movement.</figcaption></figure>
           </div>
         </div>
         <div class="frame" aria-live="polite">
@@ -306,7 +306,7 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
             <img src="assets/dinylo-pos.webp" alt="Dinylo restaurant point-of-sale dashboard" loading="lazy">
             <img src="assets/greenwich-motor-dashboard.webp" alt="University of Greenwich motor monitoring dashboard" loading="lazy">
             <img src="assets/huffman.png" alt="Huffman tree and frequency analysis diagram">
-            <svg viewBox="0 0 600 330" data-viz="arcade" role="img" aria-label="Two overlapping boxes showing collision detection"></svg>
+            <img id="arcade-frame-preview" src="assets/arcade-game.webp" alt="2D arcade game screenshot showing sprite-based gameplay" data-alt-en="2D arcade game screenshot showing sprite-based gameplay" data-alt-ar="لقطة من لعبة أركيد ثنائية الأبعاد توضّح اللعب المعتمد على الشخصيات المتحركة" loading="lazy">
           </div>
         </div>
       </div>
@@ -515,6 +515,9 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
     setText('[data-copy]',t.copy);setText('a[download]',t.download);setText('#local-label',t.local);
     setText('.work-head h2',t.workTitle);setText('.work-head p',t.workIntro);
     setTexts('.list .item h3',t.projectTitles);setTexts('.list .item p',t.projectDescriptions);setHtmls('.list .item .meta',t.projectMeta);
+    document.querySelectorAll('[data-alt-en]').forEach(function(el){el.setAttribute('alt',arabic?el.dataset.altAr:el.dataset.altEn)});
+    var arcadeCaption=document.getElementById('arcade-caption');
+    if(arcadeCaption)arcadeCaption.textContent=arabic?arcadeCaption.dataset.captionAr:arcadeCaption.dataset.captionEn;
     setText('#experience h2',t.experienceTitle);setTexts('.time .when',t.experienceWhen);setTexts('.time h3',t.experienceTitles);
     setTexts('.time li',t.experienceLists);setTexts('.time > div > p:not(.when)',t.experienceParagraphs);
     setText('#skills h2',t.skillsTitle);setTexts('.skills dt',t.skillLabels);setTexts('.skills dd',t.skillValues);
@@ -565,7 +568,6 @@ html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
     A.forEach(function(p){d+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="6" fill="var(--muted)" opacity=".75"/>'});
     B.forEach(function(p){d+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="6" fill="var(--accent)"/>'});
     viz.iot=d+T(95,200,'Low vibration')+T(395,72,'High vibration')+T(50,304,'Sensor readings')+T(50,22,'k-means, k = 2, silhouette about 0.98');
-    viz.arcade='<line x1="30" y1="250" x2="570" y2="250" stroke="var(--line)" stroke-width="2"/><rect x="190" y="160" width="70" height="90" rx="8" fill="none" stroke="var(--ink)" stroke-width="2"/><rect x="245" y="200" width="90" height="50" rx="8" fill="none" stroke="var(--muted)" stroke-width="2"/><rect x="245" y="200" width="15" height="50" fill="var(--accent)" opacity=".4"/>'+T(30,40,'Axis-aligned collision detection')+T(30,300,'Sprite sheets and character state transitions');
   })();
   document.querySelectorAll('svg[data-viz]').forEach(function(s){s.innerHTML=viz[s.dataset.viz]});
 
