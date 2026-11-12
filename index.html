@@ -51,6 +51,8 @@ nav{position:relative}nav a{position:relative;z-index:1}
 #pill{position:absolute;left:0;top:0;z-index:0;border-radius:999px;background:var(--tint);opacity:0;pointer-events:none;transition:transform .45s var(--ease),width .45s var(--ease),height .45s var(--ease),opacity .3s}
 #theme{font:inherit;font-size:14px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer;margin-left:6px;transition:border-color .2s,color .2s}
 #theme:hover{color:var(--ink);border-color:var(--muted)}
+#language{font:inherit;font-size:14px;color:var(--muted);background:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;min-height:40px;cursor:pointer;margin-left:6px;transition:border-color .2s,color .2s}
+#language:hover{color:var(--ink);border-color:var(--muted)}
 
 /* Hero, one orchestrated entrance */
 .hero{padding:96px 0 112px}
@@ -176,6 +178,10 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
   nav{width:100%}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+html[dir="rtl"] .time{padding-left:0;padding-right:28px;border-left:0;border-right:1px solid var(--line);margin-left:0;margin-right:6px}
+html[dir="rtl"] .time::after{left:auto;right:-1px}
+html[dir="rtl"] .time>div::before{left:auto;right:-34px}
+html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
 </style>
 </head>
 <body>
@@ -187,6 +193,7 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
     <nav aria-label="Main">
       <a href="#work">Work</a><a href="#experience">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
       <button id="theme" type="button" aria-label="Switch colour theme">Theme</button>
+      <button id="language" type="button" aria-label="Switch to Egyptian Arabic">العربية</button>
     </nav>
   </div>
 </header>
@@ -204,7 +211,7 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
         <a class="btn" href="https://www.linkedin.com/in/abdelrahman-a-azeez">LinkedIn</a>
         <a class="btn" href="assets/Abdelrahman-Ahmed-CV.pdf" download>Download CV</a>
       </div>
-      <p class="local">Giza, Egypt. Local time <span id="clock">--:--</span></p>
+      <p class="local"><span id="local-label">Giza, Egypt. Local time </span><span id="clock">--:--</span></p>
     </div>
   </div>
 
@@ -334,6 +341,142 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
 <script>
 (function(){
   var still=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var languageButton=document.getElementById('language');
+  var translations={
+    en:{
+      skip:'Skip to projects',
+      nav:['Work','Experience','Skills','Contact'],
+      language:'العربية',
+      languageAria:'Switch to Egyptian Arabic',
+      theme:'Theme',
+      themeAria:'Switch colour theme',
+      status:'Open to engineering opportunities',
+      lead:'I design, document and build web systems for real clients, from a medical company\'s website to a real-time restaurant POS. I\'m a computer science student at MSA University and vice president of a 280-member competitive programming club.',
+      seeWork:'See my work',
+      copy:'Copy email',
+      download:'Download CV',
+      local:'Giza, Egypt. Local time ',
+      workTitle:'Selected work',
+      workIntro:'Real constraints drove each one: a clinic\'s booking workflow, a kitchen that can\'t wait, a motor that fails without warning.',
+      projectTitles:['Zahra Medical platform','Dinylo POS and kitchen display','IoT motor predictive maintenance','Huffman compression tool','2D arcade game'],
+      projectDescriptions:[
+        'A freelance build for a medical-equipment maintenance company. I wrote the public website, a PHP booking system with JavaScript validation, and a spec for 65 requirements across 7 roles. The live product adds quote requests, spare-parts inventory and a downtime-cost calculator.',
+        'A restaurant POS built from a formal spec: tables, order lifecycle and QR self-ordering. Orders reach the kitchen in under a second over WebSockets, with automatic resync and an offline outbox. It also prints receipts, keeps an audit log and deducts stock by recipe.',
+        'A University of Greenwich team project. An ESP8266 measures motor speed, temperature, humidity and vibration, with a dashboard for control and CSV logging. I labelled vibration with k-means, trained a k-NN classifier and compared four forecasting models.',
+        'A lossless .bmp compressor in C++. Frequency analysis dropped from O(N²) to O(N), bitstreams round-trip bit-perfectly, and I fixed the memory leaks in tree cleanup.',
+        'A Windows Forms game with sprite-sheet rendering, character state transitions and axis-aligned collision detection.'
+      ],
+      projectMeta:[
+        'Sep 2025 - Apr 2026 · <a href="https://abdelrahman-ah1.github.io/ZahraMedical">Open the live site</a>',
+        'React, Node.js, MongoDB, WebSockets · Sep 2026 · <a href="https://github.com/abdelrahman-ah1">GitHub</a>',
+        'Python, ESP8266 · Aug 2026',
+        'C++ · Jan 2026 · <a href="https://github.com/abdelrahman-ah1/Huffman-Algorithm">Source on GitHub</a>',
+        'C#, Windows Forms · May 2026 · <a href="https://github.com/abdelrahman-ah1">GitHub</a>'
+      ],
+      experienceTitle:'Experience',
+      experienceWhen:['Sep 2026 - Present','Aug 2026','Sep 2025 - Apr 2026','Jan 2025','Sep 2024 - Jun 2028'],
+      experienceTitles:['Vice president, MSA Competitive Programming Club','University of Greenwich Summer Abroad','Freelance full-stack developer, Zahra Medical','1st place of 5 teams, MSA Deep Minds Competition','B.Sc. Computer Science, MSA University'],
+      experienceLists:[
+        'Lead a club of 280+ students and 18 staff, organising sessions and events.',
+        'Teach algorithm and data-structure workshops twice a week, with 78% average attendance.',
+        'Built the front and back end of the company\'s public website, now its primary online presence.',
+        'Built a PHP equipment booking system with JavaScript validation, so the team can schedule maintenance in real time and invalid submissions drop.',
+        'Wrote a formal spec for a PHP/MySQL service platform: 65 functional requirements, 7 user roles, ticket lifecycle, SLA and audit logging.',
+        'Delivered it as a live, responsive multi-page product.'
+      ],
+      experienceParagraphs:[
+        'A 7-day programme at the Faculty of Engineering and Science: IoT microcontrollers, Proteus, Linux, networking, cybersecurity basics and time-series machine learning.',
+        'First-year category. Built an automated smart-home irrigation system on Arduino Uno.',
+        'Data structures and algorithm analysis, web programming, object-oriented programming and discrete mathematics.'
+      ],
+      skillsTitle:'Skills',
+      skillLabels:['Languages','Web','Embedded and data','Spoken languages'],
+      skillValues:['C++, C, C#, JavaScript, PHP, Python, SQL, HTML and CSS','PHP, JavaScript, jQuery, MySQL, React, Node.js, MongoDB, Postman, Git and GitHub','Arduino, ESP8266, Proteus, Linux and Bash, pandas, NumPy, scikit-learn','Arabic (native), English (proficient)'],
+      contactTitle:'Let\'s build something',
+      copied:'Email copied',
+      footer:'© 2026 Abdelrahman Ahmed Abdelazeez'
+    },
+    ar:{
+      skip:'انتقل إلى المشاريع',
+      nav:['الشغل','الخبرة','المهارات','تواصل'],
+      language:'English',
+      languageAria:'Switch to English',
+      theme:'الوضع',
+      themeAria:'غيّر الوضع اللوني',
+      status:'متاح لفرص هندسة البرمجيات',
+      lead:'بصمم وبوثّق وببني أنظمة ويب لعملاء حقيقيين، من موقع شركة أجهزة طبية لنظام نقاط بيع للمطاعم بيشتغل في الوقت الحقيقي. أنا طالب علوم حاسب في جامعة أكتوبر للعلوم الحديثة والآداب، ونائب رئيس نادي البرمجة التنافسية اللي فيه ٢٨٠ عضو.',
+      seeWork:'شوف شغلي',
+      copy:'انسخ الإيميل',
+      download:'نزّل السيرة الذاتية',
+      local:'الجيزة، مصر. الوقت المحلي ',
+      workTitle:'أهم الشغل',
+      workIntro:'كل مشروع بدأ من مشكلة حقيقية: حجوزات عيادة، مطبخ مستنيش، وموتور ممكن يعطل من غير إنذار.',
+      projectTitles:['منصة زهرة الطبية','نظام دينيـلو ونـقطة البيع للمطبخ','الصيانة التنبؤية لموتور إنترنت الأشياء','أداة ضغط هوفمان','لعبة أركيد ثنائية الأبعاد'],
+      projectDescriptions:[
+        'مشروع فريلانس لشركة صيانة معدات طبية. عملت الموقع العام، ونظام حجز بـ PHP مع التحقق بـ JavaScript، وكتبت مواصفات فيها ٦٥ متطلب و٧ أدوار مستخدمين. المنتج الحالي بيضيف طلبات عروض الأسعار، ومخزون قطع الغيار، وحاسبة تكلفة التوقف.',
+        'نظام نقاط بيع للمطاعم مبني على مواصفات واضحة: الطاولات، ودورة الطلب، والطلب بالـ QR. الطلبات بتوصل للمطبخ في أقل من ثانية عن طريق WebSockets، مع إعادة مزامنة تلقائية وصندوق طلبات أوفلاين. النظام كمان بيطبع الإيصالات، وبيسجل كل العمليات، وبيخصم المخزون حسب الوصفة.',
+        'مشروع جماعي في جامعة جرينتش. جهاز ESP8266 بيقيس سرعة الموتور والحرارة والرطوبة والاهتزاز، مع لوحة تحكم وتسجيل CSV. صنّفت الاهتزاز باستخدام k-means، ودربت مصنّف k-NN، وقارنت بين ٤ نماذج للتنبؤ.',
+        'أداة ضغط بدون فقدان لملفات .bmp باستخدام C++. تحليل التكرار بقى O(N) بدل O(N²)، والـ bitstreams بترجع مطابقة للملف الأصلي، وكمان أصلحت تسريب الذاكرة في تنظيف الشجرة.',
+        'لعبة Windows Forms فيها رسم باستخدام sprite sheets، وانتقالات حالات الشخصية، واكتشاف تصادم بالمحاور.'
+      ],
+      projectMeta:[
+        'سبتمبر ٢٠٢٥ - أبريل ٢٠٢٦ · <a href="https://abdelrahman-ah1.github.io/ZahraMedical">افتح الموقع</a>',
+        'React، Node.js، MongoDB، WebSockets · سبتمبر ٢٠٢٦ · <a href="https://github.com/abdelrahman-ah1">GitHub</a>',
+        'Python، ESP8266 · أغسطس ٢٠٢٦',
+        'C++ · يناير ٢٠٢٦ · <a href="https://github.com/abdelrahman-ah1/Huffman-Algorithm">المصدر على GitHub</a>',
+        'C#، Windows Forms · مايو ٢٠٢٦ · <a href="https://github.com/abdelrahman-ah1">GitHub</a>'
+      ],
+      experienceTitle:'الخبرة',
+      experienceWhen:['سبتمبر ٢٠٢٦ - دلوقتي','أغسطس ٢٠٢٦','سبتمبر ٢٠٢٥ - أبريل ٢٠٢٦','يناير ٢٠٢٥','سبتمبر ٢٠٢٤ - يونيو ٢٠٢٨'],
+      experienceTitles:['نائب رئيس نادي البرمجة التنافسية في MSA','برنامج الصيف في جامعة جرينتش','مطور Full-stack فريلانس، زهرة الطبية','المركز الأول من ٥ فرق، مسابقة MSA Deep Minds','بكالوريوس علوم الحاسب، جامعة MSA'],
+      experienceLists:[
+        'بقدّم نادي فيه أكتر من ٢٨٠ طالب و١٨ عضو فريق، وبنظم الجلسات والفعاليات.',
+        'بدرّس خوارزميات وهياكل بيانات مرتين في الأسبوع، بمتوسط حضور ٧٨٪.',
+        'بنيت الواجهة الأمامية والخلفية لموقع الشركة العام، وبقى هو حضورها الأساسي على الإنترنت.',
+        'بنيت نظام حجز معدات بـ PHP مع تحقق بـ JavaScript، عشان الفريق يحدد مواعيد الصيانة في الوقت الحقيقي وتقل الطلبات غير الصحيحة.',
+        'كتبت مواصفات كاملة لمنصة PHP/MySQL: ٦٥ متطلب وظيفي، و٧ أدوار مستخدمين، ودورة تذاكر، واتفاقية مستوى خدمة، وتسجيل مراجعات.',
+        'سلّمت المنتج كمنصة متعددة الصفحات ومتجاوبة وتعمل فعليًا.'
+      ],
+      experienceParagraphs:[
+        'برنامج لمدة ٧ أيام في كلية الهندسة والعلوم: متحكمات IoT، وProteus، وLinux، والشبكات، وأساسيات الأمن السيبراني، وتعلم الآلة للسلاسل الزمنية.',
+        'فئة السنة الأولى. بنيت نظام ري ذكي أوتوماتيكي باستخدام Arduino Uno.',
+        'هياكل البيانات وتحليل الخوارزميات، وبرمجة الويب، والبرمجة كائنية التوجه، والرياضيات المتقطعة.'
+      ],
+      skillsTitle:'المهارات',
+      skillLabels:['اللغات','الويب','الأنظمة المدمجة والبيانات','اللغات المنطوقة'],
+      skillValues:['C++، C، C#، JavaScript، PHP، Python، SQL، HTML وCSS','PHP، JavaScript، jQuery، MySQL، React، Node.js، MongoDB، Postman، Git وGitHub','Arduino، ESP8266، Proteus، Linux وBash، pandas، NumPy، scikit-learn','العربية (لغة أم)، الإنجليزية (متمكن)'],
+      contactTitle:'خلّينا نبني حاجة',
+      copied:'تم نسخ الإيميل',
+      footer:'© ٢٠٢٦ عبدالرحمن أحمد عبدالعزيز'
+    }
+  };
+  function setText(selector, value){document.querySelectorAll(selector).forEach(function(el){el.textContent=value})}
+  function setTexts(selector, values){document.querySelectorAll(selector).forEach(function(el,i){if(values[i]!==undefined)el.textContent=values[i]})}
+  function setHtmls(selector, values){document.querySelectorAll(selector).forEach(function(el,i){if(values[i]!==undefined)el.innerHTML=values[i]})}
+  function applyLanguage(lang){
+    var t=translations[lang],arabic=lang==='ar';
+    document.documentElement.lang=arabic?'ar-EG':'en';
+    document.documentElement.dir=arabic?'rtl':'ltr';
+    setText('.skip',t.skip);
+    setTexts('nav a',t.nav);
+    setText('#language',t.language);
+    languageButton.setAttribute('aria-label',t.languageAria);
+    setText('#theme',t.theme);
+    document.getElementById('theme').setAttribute('aria-label',t.themeAria);
+    setText('.status',t.status);setText('.lead',t.lead);setText('.btn.primary',t.seeWork);
+    setText('[data-copy]',t.copy);setText('a[download]',t.download);setText('#local-label',t.local);
+    setText('.work-head h2',t.workTitle);setText('.work-head p',t.workIntro);
+    setTexts('.list .item h3',t.projectTitles);setTexts('.list .item p',t.projectDescriptions);setHtmls('.list .item .meta',t.projectMeta);
+    setText('#experience h2',t.experienceTitle);setTexts('.time .when',t.experienceWhen);setTexts('.time h3',t.experienceTitles);
+    setTexts('.time li',t.experienceLists);setTexts('.time > div > p:not(.when)',t.experienceParagraphs);
+    setText('#skills h2',t.skillsTitle);setTexts('.skills dt',t.skillLabels);setTexts('.skills dd',t.skillValues);
+    setText('#contact h2',t.contactTitle);setText('footer .wrap',t.footer);
+    try{localStorage.setItem('language',lang)}catch(e){}
+  }
+  var savedLanguage='en';
+  try{savedLanguage=localStorage.getItem('language')==='ar'?'ar':'en'}catch(e){}
+  applyLanguage(savedLanguage);
+  languageButton.addEventListener('click',function(){applyLanguage(document.documentElement.lang==='ar-EG'?'en':'ar')});
   function T(x,y,t,a){return '<text class="svgt" x="'+x+'" y="'+y+'"'+(a?' text-anchor="'+a+'"':'')+'>'+t+'</text>'}
   var viz={};
   (function(){
@@ -444,9 +587,9 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
   ['work','experience','skills','contact'].forEach(function(id){io.observe(document.getElementById(id))});
 
   document.querySelectorAll('[data-copy]').forEach(function(b){
-    var label=b.textContent,msg=document.querySelector('.ok');
+    var msg=document.querySelector('.ok');
     b.addEventListener('click',function(){
-      var done=function(){b.textContent='Copied';b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');msg.textContent='Email copied';setTimeout(function(){b.textContent=label;msg.textContent=''},1800)};
+      var done=function(){b.textContent=translations[document.documentElement.lang==='ar-EG'?'ar':'en'].copied;b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');msg.textContent=translations[document.documentElement.lang==='ar-EG'?'ar':'en'].copied;setTimeout(function(){b.textContent=translations[document.documentElement.lang==='ar-EG'?'ar':'en'].copy;msg.textContent=''},1800)};
       var fail=function(){location.href='mailto:'+b.dataset.copy};
       if(navigator.clipboard)navigator.clipboard.writeText(b.dataset.copy).then(done,fail);else fail();
     });
