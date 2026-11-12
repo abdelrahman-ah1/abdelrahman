@@ -182,6 +182,49 @@ html[dir="rtl"] .time{padding-left:0;padding-right:28px;border-left:0;border-rig
 html[dir="rtl"] .time::after{left:auto;right:-1px}
 html[dir="rtl"] .time>div::before{left:auto;right:-34px}
 html[dir="rtl"] .time ul{padding-left:0!important;padding-right:18px}
+@media print{
+  @page{size:A4;margin:12mm}
+  *,*::before,*::after{animation:none!important;transition:none!important;box-shadow:none!important;text-shadow:none!important}
+  html{scroll-behavior:auto}
+  body{background:#fff;color:#111;font-size:10pt;line-height:1.35}
+  header.top,#bar,.skip,#top-btn,#ring,#theme,#language,.hero .btns,.local,.frame,.pic,.ok{display:none!important}
+  .wrap{max-width:none;padding:0}
+  .hero{padding:0 0 14pt;transform:none!important;opacity:1!important}
+  .hero>*{animation:none!important}
+  h1{font-size:28pt;line-height:1;margin:0 0 8pt}
+  .lead{font-size:11pt;line-height:1.4;max-width:none;margin:0}
+  section{padding:14pt 0;border-top:1px solid #bbb}
+  section::before{display:none}
+  h2{font-size:16pt;margin-bottom:8pt}
+  h3{font-size:11pt;margin-bottom:3pt}
+  .work-head{margin-bottom:8pt}
+  .work-head p{margin:0}
+  .show{display:block}
+  .item{padding:7pt 0;border-top:1px solid #ddd}
+  .item:last-child{border-bottom:1px solid #ddd}
+  .item::before{display:none}
+  .item p{margin:3pt 0 4pt;font-size:9.5pt;max-width:none}
+  .meta{font-size:8.5pt}
+  .rail{display:grid;grid-template-columns:125pt 1fr;gap:20pt}
+  .rail>h2{position:static}
+  .time{padding-left:0;border:0;margin:0}
+  .time>div{padding:0 0 8pt}
+  .time>div::before,.time::after{display:none}
+  .when{font-size:8.5pt;margin:0 0 2pt}
+  .time ul{margin:3pt 0 0!important;padding-left:14pt!important}
+  .skills>div{grid-template-columns:105pt 1fr;gap:2pt 10pt}
+  .rows>div{padding:5pt 0}
+  .contact{padding:14pt 0;background:#fff;color:#111;clip-path:none!important}
+  .contact .row{display:flex}
+  .contact .row [data-copy]{display:none}
+  .contact .big{font-size:16pt;margin:4pt 0 8pt}
+  footer{padding:8pt 0 0;border-top:1px solid #bbb;font-size:8.5pt}
+  a{background:none!important;color:inherit!important}
+  a[href^="http"]::after,a[href^="mailto"]::after{content:" (" attr(href) ")";font-size:8pt;overflow-wrap:anywhere}
+  html[dir="rtl"] .rail{grid-template-columns:1fr 125pt}
+  html[dir="rtl"] .time ul{padding-left:0!important;padding-right:14pt!important}
+  html[dir="rtl"] .skills>div{grid-template-columns:1fr 105pt}
+}
 </style>
 </head>
 <body>
