@@ -8,9 +8,11 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <style>
 :root{--bg:#f6f7f9;--surface:#fff;--ink:#15181e;--muted:#5b6270;--line:#dde0e6;--accent:#0b6e64;--tint:#e3f1ef;--font:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171c;--surface:#1b1f26;--ink:#eceef2;--muted:#9aa1ae;--line:#2a2f38;--accent:#5cd1c3;--tint:#17302d}}
+:root[data-theme="dark"]{--bg:#14171c;--surface:#1b1f26;--ink:#eceef2;--muted:#9aa1ae;--line:#2a2f38;--accent:#5cd1c3;--tint:#17302d}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--font);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--font);-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
 a{color:inherit;text-decoration:none;background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease),color .2s}
 a:hover{color:var(--accent);background-size:100% 1px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
@@ -19,10 +21,10 @@ header{border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--bg
 header .wrap{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
 .brand{font-weight:700;white-space:nowrap}
 nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-nav a,.language{padding:7px 12px;border-radius:999px;color:var(--muted);font:500 14px var(--font)}
+nav a,.language,.theme{padding:7px 12px;border-radius:999px;color:var(--muted);font:500 14px var(--font)}
 nav a:hover{background:var(--tint);color:var(--ink)}
-.language{border:1px solid var(--line);background:transparent;cursor:pointer}
-.language:hover{border-color:var(--muted);color:var(--ink)}
+.language,.theme{border:1px solid var(--line);background:transparent;cursor:pointer}
+.language:hover,.theme:hover{border-color:var(--muted);color:var(--ink)}
 main{padding:72px 0 96px}
 .eyebrow{color:var(--accent);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:0 0 14px}
 h1,h2,h3{line-height:1.1;letter-spacing:-.03em}
@@ -53,6 +55,8 @@ section{padding:72px 0;border-top:1px solid var(--line)}
 footer{padding:24px 0 36px;color:var(--muted);font-size:14px}
 html[dir="rtl"] .details{grid-template-columns:1fr 220px}
 html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-old(root){z-index:1}::view-transition-new(root){z-index:2}
 @media (max-width:700px){header .wrap{align-items:flex-start;flex-direction:column;padding-top:14px;padding-bottom:14px}main{padding-top:48px}.grid,.gallery,.details,html[dir="rtl"] .details{grid-template-columns:1fr;gap:14px}section{padding:52px 0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;scroll-behavior:auto}}
 </style>
@@ -65,6 +69,7 @@ html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
       <a href="index.html" data-i18n="home">Home</a>
       <a href="https://abdelrahman-ah1.github.io/ZahraMedical/" data-i18n="liveDemo">Live Demo</a>
       <a href="https://github.com/abdelrahman-ah1" data-i18n="source">Source</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch colour theme">Theme</button>
       <button class="language" id="language" type="button" aria-label="Switch to Egyptian Arabic">العربية</button>
     </nav>
   </div>
@@ -142,7 +147,7 @@ html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
   var languageButton=document.getElementById('language');
   var translations={
     en:{
-      home:'Home',liveDemo:'Live Demo',source:'Source',language:'العربية',languageAria:'Switch to Egyptian Arabic',
+      home:'Home',liveDemo:'Live Demo',source:'Source',language:'العربية',languageAria:'Switch to Egyptian Arabic',theme:'Theme',themeAria:'Switch colour theme',
       eyebrow:'Project case study · September 2025 – April 2026',title:'Zahra Medical platform',
       lead:'A responsive platform for a medical-equipment maintenance company: public web presence, booking workflow, service operations, spare-parts inventory, and a downtime-cost calculator in one live product.',
       download:'Download CV',email:'Email me',back:'Back to portfolio',
@@ -162,7 +167,7 @@ html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
       footer:'© 2026 Abdelrahman Ahmed Abdelazeez · '
     },
     ar:{
-      home:'الرئيسية',liveDemo:'العرض المباشر',source:'المصدر',language:'English',languageAria:'Switch to English',
+      home:'الرئيسية',liveDemo:'العرض المباشر',source:'المصدر',language:'English',languageAria:'Switch to English',theme:'الوضع',themeAria:'غيّر الوضع اللوني',
       eyebrow:'دراسة حالة لمشروع · سبتمبر ٢٠٢٥ – أبريل ٢٠٢٦',title:'منصة زهرة الطبية',
       lead:'منصة متجاوبة لشركة صيانة معدات طبية: حضور عام على الويب، وسير عمل للحجز، وعمليات خدمة، ومخزون قطع غيار، وحاسبة تكلفة التوقف في منتج واحد يعمل فعليًا.',
       download:'نزّل السيرة الذاتية',email:'راسلني',back:'ارجع للموقع الشخصي',
@@ -189,12 +194,26 @@ html[dir="rtl"] .details ul{padding-left:0;padding-right:22px}
     document.querySelectorAll('[data-i18n]').forEach(function(el){if(t[el.dataset.i18n]!==undefined)el.textContent=t[el.dataset.i18n]});
     document.querySelectorAll('[data-alt-en]').forEach(function(img){img.alt=arabic?img.dataset.altAr:img.dataset.altEn});
     languageButton.setAttribute('aria-label',t.languageAria);
+    var themeButton=document.getElementById('theme');
+    themeButton.textContent=t.theme;
+    themeButton.setAttribute('aria-label',t.themeAria);
     try{localStorage.setItem('language',lang)}catch(e){}
   }
   var saved='en';
   try{saved=localStorage.getItem('language')==='ar'?'ar':'en'}catch(e){}
   applyLanguage(saved);
   languageButton.addEventListener('click',function(){applyLanguage(document.documentElement.lang==='ar-EG'?'en':'ar')});
+  var calm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var root=document.documentElement,themeButton=document.getElementById('theme');
+  try{var savedTheme=localStorage.getItem('theme');if(savedTheme==='light'||savedTheme==='dark')root.setAttribute('data-theme',savedTheme)}catch(e){}
+  themeButton.addEventListener('click',function(){
+    var current=root.getAttribute('data-theme'),dark=current==='dark'||(!current&&matchMedia('(prefers-color-scheme:dark)').matches),next=dark?'light':'dark';
+    var apply=function(){root.setAttribute('data-theme',next);try{localStorage.setItem('theme',next)}catch(e){}};
+    if(document.startViewTransition&&!calm){
+      var r=themeButton.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,end=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+      document.startViewTransition(apply).ready.then(function(){root.animate({clipPath:['circle(0 at '+x+'px '+y+'px)','circle('+end+'px at '+x+'px '+y+'px)']},{duration:700,easing:'cubic-bezier(.2,.7,.2,1)',pseudoElement:'::view-transition-new(root)'})});
+    }else apply();
+  });
 })();
 </script>
 </body>
